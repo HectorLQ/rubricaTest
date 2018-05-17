@@ -1,5 +1,6 @@
 package fp;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -23,15 +24,31 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
+		List<Integer>fibo;
+		fibo = new ArrayList<Integer>();
+		calculattingFibo(n, fibo);
 		
+		return fibo;
+			
+	}
+
+
+	private static void calculattingFibo(int n, List<Integer> fibo) {
+		int num1 = 0; int num2 = 1; int num3 = 0;
+		for (int i = 0; i < n; i++) {
+			num3 = num1 + num2;
+			num2 = num1;
+			num1 = num3;
+			fibo.add(num3);
+		}
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-	
-		}
+		
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
@@ -57,98 +74,6 @@ public class Calculator {
 	public static String speakToMe(int n) {
 		
 		
-	public static String unidadEnTexto(int iNumero){	
-		switch(iNumero){
-		case 0:
-			return "cero";
-		case 1:
-			return "uno";
-		case 2:
-			return "dos";
-		case 3:
-			return "tres";
-		case 4:
-			return "cuatro";
-		case 5:
-			return "cinco";
-		case 6:
-			return "seis";
-		case 7:
-			return "siete";
-		case 8:
-			return "ocho";
-		case 9:
-			return "nueve";
-		default:
-			return "";
-		}
-	 }
-	public static String decenaEnTexto(int iDecena){
-		 switch (iDecena){
-			case 1:
-				return "diez";
-			case 2:
-				return "veinte";
-			case 3:
-				return "treinta";
-			case 4:
-				return "cuarenta";
-			case 5:
-				return "cincuenta";
-			case 6:
-				return "sesenta";
-			case 7:
-				return "setenta";
-			case 8:
-				return "ochenta";
-			case 9:
-				return "noventa";		
-			default:
-				return "";
-		 }
-		}
-	 public static String decenas(int iDecena){	 
-		 switch (iDecena){
-			case 11:
-				return "once";
-			case 12:
-				return "doce";
-			case 13:
-				return "trece";
-			case 14:
-				return "catorce";
-			case 15:
-				return "quince";
-			case 16:
-				return "dieciseis";
-			case 17:
-				return "diecisiete";
-			case 18:
-				return "dieciocho";
-			case 19:
-				return "diecinueve";		
-			default:
-				return "";
-		 }
-		 
-		 int iNumero;
-		 int iDecenas;
-		 String sTexto;
-		 int iUnidad = iNumero%10;
-		 iNumero = iNumero/10;		
-		 sTexto = unidadEnTexto(iUnidad);
-		 
-		 int iDecena = iNumero%10;
-		 iNumero = iNumero/10;
-		  
-		 if ((iUnidad==0) && (iDecena>0))
-		 	sTexto = decenaEnTexto(iDecena);
-		 else if (iDecena==1)
-		 	sTexto = decenas(10+iUnidad);
-		 else if (iDecena > 1)
-		 	sTexto = decenaEnTexto(iDecena) + " y " + sTexto;
-		 
-		 
 	}
 
 	/*
