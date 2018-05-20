@@ -47,7 +47,22 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		
+		List<Integer>numList;
+		numList = new ArrayList<Integer>();
+			int n = number - step;
+			
+			while(n > 0) {
+				numList.add(n);
+				n-=step;
+			}
+			int[] nums;
+			nums = new int[numList.size()];
+			for (int i = 0; i < nums.length; i++) {
+				nums[i] = numList.get(i);
+			}
+			
+			return nums;
+			
 	}
 
 	/*
@@ -55,8 +70,6 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		int number = 0;
-		int[] div;
 		
 	}
 
@@ -64,6 +77,7 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
+		 
 		
 	}
 
