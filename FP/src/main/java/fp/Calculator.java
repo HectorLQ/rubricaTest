@@ -95,7 +95,26 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		
+		if(fecha.isEmpty()) {			
+			return false;			
+		}else {
+			return isALeapYear(fecha);
+		}
+	}
+
+
+	private static boolean isALeapYear(String fecha) {
+		String year = fecha;
+		year = fecha.substring(6);
+			int num = Integer.parseInt(year);
+			if((num % 4 == 0) && ((num % 100 != 0)) || (num % 400 == 0)){
+				
+				return true;
+				
+			}else {
+				
+			return false;
+		}
 	}
 
 	/*
