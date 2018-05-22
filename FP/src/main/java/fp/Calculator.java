@@ -49,20 +49,24 @@ public class Calculator {
 	public static int[] stepThisNumber(int number, int step) {
 		List<Integer>numList;
 		numList = new ArrayList<Integer>();
-			int n = number - step;
-			
-			while(n > 0) {
-				numList.add(n);
-				n-=step;
-			}
-			int[] nums;
-			nums = new int[numList.size()];
-			for (int i = 0; i < nums.length; i++) {
-				nums[i] = numList.get(i);
-			}
-			
+		int[] nums = stepByStepMethod(number, step, numList);	
 			return nums;
 			
+	}
+
+
+	private static int[] stepByStepMethod(int number, int step, List<Integer> numList) {
+		int n = number - step;	
+		while(n > 0) {
+			numList.add(n);
+			n-=step;
+		}
+		int[] nums;
+		nums = new int[numList.size()];
+		for (int i = 0; i < nums.length; i++) {
+			nums[i] = numList.get(i);
+		}
+		return nums;
 	}
 
 	/*
@@ -70,9 +74,42 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
+		List<Integer>divisors;
+		divisors = new ArrayList<Integer>();
 		
+		int numb = n;
+		numb = numbIntoList(n, divisors, numb);	
+		
+		int[] dv;
+		dv = divMethod(n, divisors);	
+		return dv;
 	}
 
+
+	private static int[] divMethod(int n, List<Integer> divisors) {
+		int[] dv;
+		dv = new int[(divisors.size())];
+		if(n == 0) {
+			dv = null;
+		}else {
+			for (int i = 0; i < dv.length; i++) {
+				dv[i] = divisors.get(i);
+			}
+			
+		}
+		return dv;
+	}
+
+
+	private static int numbIntoList(int n, List<Integer> divisors, int numb) {
+		while(numb != 0) {
+			if(n%numb == 0) {
+				divisors.add(numb);
+			}			
+			numb--;
+		}
+		return numb;
+	}
 	/*
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
@@ -86,8 +123,28 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		
-		
+		String[] units = {"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"};
+		String[] tens = {"Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta", "Noventa"};
+		String zero = "Cero";
+		String numb="";
+		numb = stringsResults(n, units, tens, zero, numb);
+		return numb;
+	}
+
+
+	private static String stringsResults(int n, String[] units, String[] tens, String zero, String numb) {
+		if(n == 0) {
+			numb += zero;
+		}else if(n < 10) {
+			numb += units[n - 1];
+		}else if(n%10 == 0) {
+			numb += tens[(n/10) -1];
+		}else {
+			int unit = n%10;
+			int ten = n/10;
+			numb = tens[ten - 1] + " y " + units[unit - 1];
+		}
+		return numb;
 	}
 
 	/*
